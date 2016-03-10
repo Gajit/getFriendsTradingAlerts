@@ -67,3 +67,5 @@ function getFriendsTradingAlerts(uid) {
 
   return alerts.reverse();
 }
+
+module.exports = getFriendsTradingAlerts();
