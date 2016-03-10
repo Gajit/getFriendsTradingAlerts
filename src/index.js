@@ -1,19 +1,22 @@
+'use strict';
+const helpers = require('./lib/helpermethods.js');
+
 function getFriendsTradingAlerts(uid) {
-  const friends = getFriendsListForUser(uid);
+  // console.log('help', helpers)
+  const friends = helpers.getFriendsListForUser(uid);
   const activity = [];
   const ordered = [];
   const alerts = [];
 
   // project all friends transactions into the activity array
   friends.forEach( friend => {
-    const activityStrings = getTradeTransactionsForUser(friend);
+    const activityStrings = helpers.getTradeTransactionsForUser(friend);
     activityStrings.forEach( el => activity.push(el.split(',').splice(1)));
   });
 
   // tease out activity noise to individual threads
-  let threads = activity
-      .reduce((symbols, arr, curIdx, orgArr) => {
-        let count = 0;
+  const threads = activity
+      .reduce((symbols, arr) => {
         symbols[arr[1]] = [];
         return symbols;
       }, {});
@@ -21,6 +24,7 @@ function getFriendsTradingAlerts(uid) {
   // score ticker threads
   activity.forEach( a => {
     let action = a[0];
+    let count = 0;
      if ( action === "BUY") {
        count = 1;
      } else if ( action === "SELL") {
@@ -68,4 +72,4 @@ function getFriendsTradingAlerts(uid) {
   return alerts.reverse();
 }
 
-module.exports = getFriendsTradingAlerts();
+module.exports = getFriendsTradingAlerts;
