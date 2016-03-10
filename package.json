@@ -4,9 +4,12 @@
   "description": "Alerts for friends weekly stock trading activities",
   "main": "src/index.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "3.2.0",
+    "mocha": "^2.4.5"
+  },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha src/index.test.js"
   },
   "repository": {
     "type": "git",
@@ -19,10 +22,6 @@
   ],
   "author": "Greg A. Johns <greg.johns@gmail.com> (http://www.gregjohns.com/)",
   "license": "MIT",
-  "devDependencies": {
-    "chi": "0.0.10",
-    "mocha": "^2.4.5"
-  },
   "bugs": {
     "url": "https://github.com/Gajit/getFriendsTradingAlerts/issues"
   },

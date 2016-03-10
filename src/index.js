@@ -2,7 +2,6 @@
 const helpers = require('./lib/helpermethods.js');
 
 function getFriendsTradingAlerts(uid) {
-  // console.log('help', helpers)
   const friends = helpers.getFriendsListForUser(uid);
   const activity = [];
   const ordered = [];
